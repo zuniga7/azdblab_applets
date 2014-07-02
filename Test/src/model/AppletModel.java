@@ -44,6 +44,7 @@ public class AppletModel {
 		connection.setRequestProperty("Content-Length",
 				"" + Integer.toString(urlParameters.getBytes().length));
 		connection.setUseCaches(false);
+		connection.setDefaultUseCaches(false);
 
 		// send parameters
 		DataOutputStream wr = new DataOutputStream(connection.getOutputStream());

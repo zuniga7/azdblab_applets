@@ -93,6 +93,7 @@ public abstract class ObjectApplet extends JApplet {
 		textArea.append(message);
 		textArea.setLineWrap(true);
 		textArea.setWrapStyleWord(true);
+		textArea.setEditable(false);
 
 		JScrollPane scroll = new JScrollPane(textArea);
 		panel.add(scroll);
