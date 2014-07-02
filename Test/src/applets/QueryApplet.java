@@ -16,11 +16,11 @@ public class QueryApplet extends ObjectApplet {
 					"https://aw.cs.arizona.edu/AZDBLAB/response.jsp",
 					"dataTarget=applet");
 
-			panel.add(new JLabel((String) object));
+			panel.add((JPanel) object);
 
 		} catch (ClassNotFoundException | IOException e) {
 			e.printStackTrace();
-			return getErrorPanel();
+			return getErrorPanel(e.getMessage());
 		}
 
 		return panel;

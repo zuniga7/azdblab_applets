@@ -1,13 +1,13 @@
 package model;
 
-import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+
+import javax.swing.JPanel;
 
 public class AppletModel {
 
@@ -46,16 +46,11 @@ public class AppletModel {
 
 		// get response
 		InputStream response = connection.getInputStream();
-//		String line;
-//		String output = "";
-//		BufferedReader reader = new BufferedReader(new InputStreamReader(response));
-//		while ((line = reader.readLine()) != null) {
-//		    output += line;
-//		}
-		Object object = new ObjectInputStream(response).readObject();
-
+		ObjectInputStream inputStream = new ObjectInputStream(response);
+		Object object = inputStream.readObject();
+		
+		inputStream.close();
 		connection.disconnect();
-//		return output;
 		return object;
 	}
 
