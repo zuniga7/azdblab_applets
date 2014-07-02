@@ -2,6 +2,11 @@ package applets;
 
 import java.io.IOException;
 
+/**
+ * 
+ * @author hazielzuniga
+ * 
+ */
 public class QueryApplet extends ObjectApplet {
 
 	@Override
@@ -9,6 +14,6 @@ public class QueryApplet extends ObjectApplet {
 			IOException {
 		return model.postRequest(
 				"https://aw.cs.arizona.edu/AZDBLAB/response.jsp",
-				"dataTarget=applet");
+				"dataTarget=applet&id=visualize");
 	}
 }

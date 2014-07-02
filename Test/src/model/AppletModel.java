@@ -9,12 +9,19 @@ import java.net.URL;
 
 import javax.swing.JPanel;
 
+/**
+ * 
+ * @author hazielzuniga
+ * 
+ */
 public class AppletModel {
 
 	/**
-	 * From <a href=
-	 * 'http://stackoverflow.com/questions/4205980/java-sending-http-parameters-via-post-method-easily'>StackOverflow</
-	 * a >
+	 * Makes a POST Request to the URL with the given urlParameters. Then
+	 * retrieves an object in response and returns it.
+	 * 
+	 * @see <a href='http://stackoverflow.com/a/4206094/3435718'> StackOverflow
+	 *      -- Java - sending HTTP parameters via POST method easily </a>
 	 * 
 	 * @param URL
 	 * @param urlParameters
@@ -48,9 +55,9 @@ public class AppletModel {
 		InputStream response = connection.getInputStream();
 		ObjectInputStream inputStream = new ObjectInputStream(response);
 		Object object = inputStream.readObject();
-		
-		inputStream.close();
-		connection.disconnect();
+
+		inputStream.close(); // close ObjectInputStream
+		connection.disconnect(); // disconnect from server
 
 		return object;
 	}

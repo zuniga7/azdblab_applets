@@ -13,6 +13,11 @@ import javax.swing.JTextArea;
 
 import model.AppletModel;
 
+/**
+ * 
+ * @author hazielzuniga
+ * 
+ */
 public abstract class ObjectApplet extends JApplet {
 	protected AppletModel model;
 
@@ -25,12 +30,23 @@ public abstract class ObjectApplet extends JApplet {
 		model = new AppletModel();
 	}
 
+	/**
+	 * add a JPanel to this applet
+	 * 
+	 * @param panel
+	 */
 	private void addToApplet(JPanel panel) {
 		Container pane = getContentPane();
 		pane.add(panel);
 	}
 
-	public JPanel nodeSetup() {
+	/**
+	 * calls returnRequestObject() and adds the Object (Component) retrieved
+	 * into a panel that will be displayed on the applet
+	 * 
+	 * @return
+	 */
+	private JPanel nodeSetup() {
 		JPanel panel = new JPanel();
 
 		try {
@@ -44,9 +60,30 @@ public abstract class ObjectApplet extends JApplet {
 		return panel;
 	}
 
+	/**
+	 * Will call model.postRequest(URL, Parameters) to make a request to
+	 * response.jsp, which will return the Object (Component) to be displayed by
+	 * the applet. <br>
+	 * <br>
+	 * 
+	 * It should be implemented similarly to this: <br>
+	 * return model.postRequest(
+	 * "https://aw.cs.arizona.edu/AZDBLAB/response.jsp",
+	 * "dataTarget=applet&id=YOURIDTHATCALLSAMETHOD");
+	 * 
+	 * @return
+	 * @throws ClassNotFoundException
+	 * @throws IOException
+	 */
 	public abstract Object returnRequestObject() throws ClassNotFoundException,
 			IOException;
 
+	/**
+	 * Returns a JPanel containing the error message provided
+	 * 
+	 * @param message
+	 * @return
+	 */
 	private JPanel getErrorPanel(String message) {
 		JPanel panel = new JPanel();
 		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
