@@ -1,7 +1,8 @@
 package applets;
 
-import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.Container;
+import java.io.IOException;
 
 import javax.swing.BoxLayout;
 import javax.swing.JApplet;
@@ -24,24 +25,29 @@ public abstract class ObjectApplet extends JApplet {
 		model = new AppletModel();
 	}
 
-	public abstract JPanel nodeSetup();
-
 	private void addToApplet(JPanel panel) {
-		// get viewable panels from node
-		// JPanel panel = node.getModifiedDataPanel();
-		// JPanel buttons = node.getModifiedButtonPanel();
-
-		// add data panel into the scroll pane that houses it
-		// GraphScrollPane myRightGraphPane = new GraphScrollPane();
-		// myRightGraphPane.setViewportView(panel);
-
-		// add scroll pane into applet pane
 		Container pane = getContentPane();
 		pane.add(panel);
-		// pane.add(buttons, BorderLayout.SOUTH);
 	}
 
-	protected JPanel getErrorPanel(String message) {
+	public JPanel nodeSetup() {
+		JPanel panel = new JPanel();
+
+		try {
+			panel.add((Component) returnRequestObject());
+
+		} catch (ClassNotFoundException | IOException e) {
+			e.printStackTrace();
+			return getErrorPanel(e.getMessage());
+		}
+
+		return panel;
+	}
+
+	public abstract Object returnRequestObject() throws ClassNotFoundException,
+			IOException;
+
+	private JPanel getErrorPanel(String message) {
 		JPanel panel = new JPanel();
 		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 		panel.add(new JLabel("Unable to load object"));

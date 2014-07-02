@@ -51,6 +51,7 @@ public class AppletModel {
 		
 		inputStream.close();
 		connection.disconnect();
+
 		return object;
 	}
 
