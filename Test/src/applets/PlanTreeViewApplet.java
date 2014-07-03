@@ -9,7 +9,7 @@ public class PlanTreeViewApplet extends ObjectApplet {
 			IOException {
 		return model.postRequest(
 				"https://aw.cs.arizona.edu/AZDBLAB/response.jsp",
-				"dataTarget=applet&id=visualize&runID=" + getParameter("runID")
+				"dataTarget=applet&id=planTreeView&runID=" + getParameter("runID")
 						+ "&iQueryNum=" + getParameter("iQueryNum")
 						+ "&queryExecutionNum" + getParameter("queryExecutionNum"));
 
