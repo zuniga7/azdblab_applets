@@ -1,11 +1,11 @@
 package applets;
 
-import java.awt.Component;
 import java.awt.Container;
 import java.io.IOException;
 
 import javax.swing.BoxLayout;
 import javax.swing.JApplet;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -35,9 +35,9 @@ public abstract class ObjectApplet extends JApplet {
 	 * 
 	 * @param panel
 	 */
-	private void addToApplet(JPanel panel) {
+	private void addToApplet(JComponent component) {
 		Container pane = getContentPane();
-		pane.add(panel);
+		pane.add(component);
 	}
 
 	/**
@@ -46,18 +46,15 @@ public abstract class ObjectApplet extends JApplet {
 	 * 
 	 * @return
 	 */
-	private JPanel nodeSetup() {
-		JPanel panel = new JPanel();
+	private JComponent nodeSetup() {
 
 		try {
-			panel.add((Component) returnRequestObject());
+			return (JComponent) returnRequestObject();
 
 		} catch (ClassNotFoundException | IOException e) {
 			e.printStackTrace();
 			return getErrorPanel(e.getMessage());
 		}
-
-		return panel;
 	}
 
 	/**

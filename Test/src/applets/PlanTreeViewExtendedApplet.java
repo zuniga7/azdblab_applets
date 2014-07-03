@@ -2,17 +2,17 @@ package applets;
 
 import java.io.IOException;
 
-public class PlanTreeViewApplet extends ObjectApplet {
+public class PlanTreeViewExtendedApplet extends ObjectApplet {
 
 	@Override
 	public Object returnRequestObject() throws ClassNotFoundException,
 			IOException {
 		return model.postRequest(
 				"https://aw.cs.arizona.edu/AZDBLAB/response.jsp",
-				"dataTarget=applet&id=planTreeView&runID="
+				"dataTarget=applet&id=extendedPlanTreeView&runID="
 						+ getParameter("runID") + "&iQuery="
 						+ getParameter("iQuery") + "&queryExec="
 						+ getParameter("queryExec"));
-
 	}
+
 }
