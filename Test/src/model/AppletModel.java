@@ -54,7 +54,7 @@ public class AppletModel {
 
 		// get response
 		InputStream response = connection.getInputStream();
-		ObjectInputStream inputStream = new ObjectInputStream(response);
+		ObjectInputStream inputStream = new CustomInputStream(response);
 		Object object = inputStream.readObject();
 
 		inputStream.close(); // close ObjectInputStream
