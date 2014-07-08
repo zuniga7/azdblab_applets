@@ -14,7 +14,7 @@ public class QueryApplet extends ObjectApplet {
 			IOException {
 		return model.postRequest(
 				"https://aw.cs.arizona.edu/AZDBLAB/response.jsp",
-				"dataTarget=applet&id=visualize&queryID="
-						+ getParameter("queryID"));
+				"dataTarget=applet&id=visualize&runID=" + getParameter("runID")
+						+ "&iQuery=" + getParameter("iQuery"));
 	}
 }
